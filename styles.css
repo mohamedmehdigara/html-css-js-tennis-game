@@ -10,7 +10,7 @@ body, html {
 #tennis-court {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative; /* Changed to relative to allow overlay positioning */
 }
 
 /* Player Rackets */
@@ -72,6 +72,13 @@ body, html {
   color: #ffffff;
   font-family: Arial, sans-serif;
   font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#winner-text {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 

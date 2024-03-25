@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg id="tennis-court" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+    <rect x="0" y="0" width="600" height="300" fill="#2ecc71"/>
+    <rect x="30" y="30" width="540" height="240" fill="none" stroke="#ffffff" stroke-width="10"/>
+    <line x1="300" y1="30" x2="300" y2="270" stroke="#ffffff" stroke-width="10"/>
+    <circle cx="300" cy="150" r="40" fill="none" stroke="#ffffff" stroke-width="10"/>
+  </svg>
+
+  <div class="racket" id="racket1"></div>
+  <div class="racket" id="racket2"></div>
+  <div class="ball" id="ball"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  #tennis-court {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  
+  .racket {
+    width: 10px;
+    height: 70px;
+    background-color: #ffffff;
+    position: absolute;
+  }
+  
+  #racket1 {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #racket2 {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .ball {
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  

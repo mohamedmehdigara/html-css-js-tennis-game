@@ -29,40 +29,37 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to move the ball
   function moveBall() {
     if (!gameOver) {
-      // Move ball only if it's visible
-      if (ball.style.display !== "none") {
-        ballX += ballSpeedX;
-        ballY += ballSpeedY;
+      ballX += ballSpeedX;
+      ballY += ballSpeedY;
 
-        // Ball collision with walls
-        if (ballX <= 40 || ballX >= 590) {
-          ballSpeedX = -ballSpeedX;
+      // Ball collision with walls
+      if (ballX <= 40 || ballX >= 590) {
+        ballSpeedX = -ballSpeedX;
+      }
+
+      if (ballY <= 40 || ballY >= 260) {
+        ballSpeedY = -ballSpeedY;
+      }
+
+      // Ball collision with rackets
+      if (ballX <= 50 && ballY >= racket1Y && ballY <= racket1Y + racketHeight ||
+          ballX >= 540 && ballY >= racket2Y && ballY <= racket2Y + racketHeight) {
+        ballSpeedX = -ballSpeedX;
+
+        // Increase ball speed after each collision
+        if (Math.abs(ballSpeedX) < maxBallSpeed) {
+          ballSpeedX *= 1.1;
+          ballSpeedY *= 1.1;
         }
+      }
 
-        if (ballY <= 40 || ballY >= 260) {
-          ballSpeedY = -ballSpeedY;
-        }
-
-        // Ball collision with rackets
-        if (ballX <= 50 && ballY >= racket1Y && ballY <= racket1Y + racketHeight ||
-            ballX >= 540 && ballY >= racket2Y && ballY <= racket2Y + racketHeight) {
-          ballSpeedX = -ballSpeedX;
-
-          // Increase ball speed after each collision
-          if (Math.abs(ballSpeedX) < maxBallSpeed) {
-            ballSpeedX *= 1.1;
-            ballSpeedY *= 1.1;
-          }
-        }
-
-        // Check for scoring
-        if (ballX <= 0) {
-          player2Score++;
-          checkGameOver();
-        } else if (ballX >= 600) {
-          player1Score++;
-          checkGameOver();
-        }
+      // Check for scoring
+      if (ballX <= 0) {
+        player2Score++;
+        checkGameOver();
+      } else if (ballX >= 600) {
+        player1Score++;
+        checkGameOver();
       }
 
       updateElements();
@@ -90,20 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-  function updateElements() {
-    racket1.setAttribute("y", racket1Y);
-    racket2.setAttribute("y", racket2Y);
-  }
   // Function to check if game is over
-  // Function to check if game is over
-function checkGameOver() {
-  if (!gameOver && (player1Score >= 5 || player2Score >= 5)) {
-    gameOver = true;
-    setTimeout(showGameOverOverlay, 1000); // Delay game over message by 1 second
+  function checkGameOver() {
+    if (!gameOver && (player1Score >= 5 || player2Score >= 5)) {
+      gameOver = true;
+      setTimeout(showGameOverOverlay, 1000); // Delay game over message by 1 second
+    }
   }
-}
-
 
   // Function to display game over overlay
   function showGameOverOverlay() {
@@ -134,33 +124,10 @@ function checkGameOver() {
   }
 
   // Event listener for reset button
-   // Event listener for reset button
-   const resetButton = document.getElementById("reset-button");
-   resetButton.addEventListener("click", resetGame);
- 
-   // Function to draw rackets using SVG
-   function drawRackets() {
-     const racketSVG = `<svg id="rackets" width="600" height="300" xmlns="http://www.w3.org/2000/svg">
-                         <rect id="racket1" x="40" y="${racket1Y}" width="10" height="70" fill="#ffffff"/>
-                         <rect id="racket2" x="550" y="${racket2Y}" width="10" height="70" fill="#ffffff"/>
-                        </svg>`;
-     court.insertAdjacentHTML('beforeend', racketSVG);
-   }
- 
-   // Function to draw the ball using SVG
-   function drawBall() {
-     const ballSVG = `<svg id="ball" width="600" height="300" xmlns="http://www.w3.org/2000/svg">
-                       <circle cx="${ballX}" cy="${ballY}" r="10" fill="#ffffff"/>
-                      </svg>`;
-     court.insertAdjacentHTML('beforeend', ballSVG);
-   }
- 
-   // Draw rackets and ball
-   drawRackets();
-   drawBall();
- 
-   // Initialize game
-   setInterval(moveBall, 10);
-   moveRackets();
- });
- 
+  const resetButton = document.getElementById("reset-button");
+  resetButton.addEventListener("click", resetGame);
+
+  // Initialize game
+  setInterval(moveBall, 10);
+  moveRackets();
+});

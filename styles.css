@@ -98,3 +98,42 @@ body, html {
   background-color: #2ecc71;
   color: #ffffff;
 }
+
+/* Additional Styles */
+
+/* Styling for the court boundaries */
+#court-boundaries {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 10;
+}
+
+/* Styling for the center line */
+#center-line {
+  stroke: #ffffff;
+  stroke-width: 5;
+}
+
+/* Styling for the center circle */
+#center-circle {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 5;
+}
+
+/* Styling for the scoreboard text */
+#scoreboard span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Styling for the game over overlay text */
+#game-over-text {
+  text-align: center;
+}
+
+/* Styling for the reset button */
+#reset-button {
+  display: block;
+  margin: 0 auto;
+}
